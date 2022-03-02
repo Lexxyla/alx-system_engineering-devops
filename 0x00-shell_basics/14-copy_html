@@ -1,2 +1,2 @@
 #!/bin/bash                                                          
-cp -u *.html ..' > 14-copy_html
+cp -u *.html ..'
