@@ -1,6 +1,6 @@
 # Loops, conditions and parsing
 
-In this project, I worked on loops and conditionals statemetns in Bash.
+In this project, I worked on loops and conditionals statements in Bash.
 
 ## Helper File :raised_hands:
 
@@ -50,7 +50,7 @@ In this project, I worked on loops and conditionals statemetns in Bash.
 
 * **9. To file, or not to file**
   * [9-to_file_or_not_to_file](./9-to_file_or_not_to_file): Bash script that gives information  about the `school` file.
-    * If the file exists, displays: `chool file exists`.
+    * If the file exists, displays: `school file exists`.
     * If the file does not exist, displays: `school file does not exist`.
     * If the file exists and is empty, displays: `school file is empty`.
     * If the file exists and is not empty, displays: `school file is not empty`.
