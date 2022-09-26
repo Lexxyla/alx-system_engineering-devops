@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# Script to setup an nginx server
+index_file=/var/www/html/index.nginx-debian.html
+error_file=/var/www/html/error.html
+default_web=/etc/nginx/sites-available/default
+config_text=\
+"server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+
+	index index.html index.htm index.nginx-debian.html;
+
+	server_name _;
+
+	error_page 404 /error.html;
+	add_header X-Served-By $(hostname);
+
+	location /error.html {
+		 root /var/www/html;
+		 internal;
+	}
+
+	location /redirect_me {
+		 rewrite ^/redirect_me https://google.com permanent;
+	}
+
+	location / {
+		 try_files \$uri \$uri/ =404;
+	}
+}"
+sudo apt update
+sudo apt install nginx -y
+echo "Hello World!" | sudo tee $index_file &&
+sudo chmod 644 $index_file
+sudo chmod a+w $default_web &&
+echo "$config_text" > $default_web
+sudo chmod 644 $default_web
+sudo touch $error_file
+sudo chmod a+w $error_file
+sudo echo "Ceci n'est pas une page" > $error_file
+sudo chmod 644 $error_file
+sudo service nginx restart
